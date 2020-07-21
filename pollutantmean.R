@@ -1,15 +1,13 @@
 pollutantmean <- function(directory, pollutant, id=1:332) {
-    sum_v <- 0;
-    cnt <- 0;
-    
-    for(n in id) {
-        filename <- paste(sprintf("%03d", n), ".csv", sep="")
-        fp <- paste(directory, filename, sep="/")
-        df <- read.csv(fp)
-        df2 <- df[complete.cases(df), ]
-        sum_v <- sum_v + sum(df2[pollutant])
-        cnt <- cnt + dim(df2[pollutant])[[1]]
+    filenames = dir(directory, full.names = T)
+    output = read.csv(filenames[id[1]])
+    output <- output[complete.cases(output), ]
+    print(dim(output))
+    for(file in filenames[id[-1]]) {
+        print(file)
+        df <- read.csv(file, )
+        output <- rbind(output, df[complete.cases(df), ])
     }
-    
-    sum_v/cnt;
+    print(dim(output))
+    mean(output[[pollutant]])
 }
