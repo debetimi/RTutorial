@@ -1,9 +1,6 @@
 pollutantmean <- function(directory, pollutant, id=1:332) {
     filenames = dir(directory, full.names = T)
-    output = read.csv(filenames[id[1]])
-    for(file in filenames[id[-1]]) {
-        df <- read.csv(file, )
-        output <- rbind(output, df)
-    }
+    dfs <-  lapply(filenames[id], read.csv);
+    output <- Reduce(rbind,dfs,dfs[[1]][0,])
     mean(output[complete.cases(output[pollutant]),][[pollutant]])
 }
