@@ -5,3 +5,9 @@ x<-c(0.6, 0.5)
 x<-c(T, F)
 
 y <- data.frame(a = 1, b = "a")
+
+make.power  <-  function (n) {
+    pow <- function (x) {
+        x^n
+    }
+}
