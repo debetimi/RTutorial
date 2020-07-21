@@ -32,3 +32,33 @@ complete("specdata", 30:25)
 complete("specdata", 3)
 ```
 
+```{r}
+source("corr.R")
+cr <- corr("specdata", 150)
+head(cr)
+```
+```{r}
+summary(cr)
+```
+```{r}
+cr <- corr("specdata", 400)
+head(cr)
+```
+```{r}
+summary(cr)
+```
+```{r}
+cr <- corr("specdata", 5000)
+summary(cr)
+```
+```{r}
+length(cr)
+```
+```{r}
+cr <- corr("specdata")
+summary(cr)
+```
+```{r}
+length(cr)
+```
+
