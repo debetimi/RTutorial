@@ -1,3 +1,4 @@
+library(dplyr)
 chicago <- readRDS("chicago.rds")
 dim(chicago)
 str(chicago)
